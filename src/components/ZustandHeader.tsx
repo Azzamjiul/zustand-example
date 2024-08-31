@@ -1,15 +1,24 @@
 "use client";
 
-import useThemeStore from "@/lib/themeStore";
+import useQuestionState from "@/lib/questionStore";
 
-const ZustandHeader = () => {
-  const { theme } = useThemeStore();
+const DefaultHeader = () => {
+  const { passed, score }  = useQuestionState()
 
   return (
-    <div className={`${theme === 'light' ? 'bg-white text-black' : 'bg-gray-900 text-white'}`}>
-      <h1 className="text-3xl font-bold mb-8">Zustand Page</h1>
+    <div className={`bg-white text-center mx-auto`}>
+      {
+        passed &&
+        <h1 className="text-3xl text-green-600 font-bold mb-8">Passed</h1>
+      }
+      {
+        !passed &&
+        <h1 className="text-3xl text-red-600 font-bold mb-8">Not Passed</h1>
+      }
+
+      <div className='text-2xl'>Score: {score}</div>
     </div>
   );
 };
 
-export default ZustandHeader;
+export default DefaultHeader;

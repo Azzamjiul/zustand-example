@@ -8,9 +8,7 @@ const DefaultPage = () => {
   const [score, setScore] = useState<number>(0)
   const [passed, setPass] = useState<boolean>(false)
 
-  const generateQuestion = () => {
-    return Math.floor(Math.random() * 10) + 1;
-  };
+  const generateQuestion = () => { return Math.floor(Math.random() * 10) + 1; };
 
   useEffect(() => {
     setPass(score >= 2);
